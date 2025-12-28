@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya Career Consultancy - Imagine Yourself</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: -40px auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stat-card.visible {
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .stat-card:nth-child(1).visible {
+            animation-delay: 0.1s;
+        }
+
+        .stat-card:nth-child(2).visible {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3).visible {
+            animation-delay: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 2rem;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateX(10px);
+        }
+
+        /* Courses Section */
+        .courses {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 2rem;
+        }
+
+        .courses h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .course-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Colleges Section */
+        .colleges {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 2rem;
+        }
+
+        .colleges h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .state-colleges {
+            margin-bottom: 3rem;
+        }
+
+        .state-colleges h3 {
+            font-size: 1.8rem;
+            color: #764ba2;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .college-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .college-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateX(-20px);
+            cursor: pointer;
+        }
+
+        .college-item.visible {
+            animation: slideInLeft 0.5s forwards;
+        }
+
+        .college-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        /* General Modal Style */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s;
+            position: relative;
+        }
+
+        /* Specific Detail Modal sizing */
+        #collegeModal .modal-content {
+            max-width: 800px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Detail Modal Specifics */
+        .college-detail-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .detail-section h4 {
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.3rem;
+        }
+
+        .review-item {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            padding-left: 10px;
+            border-left: 3px solid #764ba2;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #667eea;
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-links.active { display: flex; }
+            .hero h1 { font-size: 2rem; }
+            .hero .tagline { font-size: 1.2rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .contact-info { flex-direction: column; gap: 1rem; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 25px; bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Priya Career Consultancy</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#colleges">Colleges</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Priya Career Consultancy</h1>
+        <p class="tagline">Your Dream. Our Guidance. Your Success.</p>
+        <a href="#contact" class="cta-button">Start Your Journey</a>
+    </section>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number" data-target="20">0</div>
+            <div>Years of Experience</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="1000">0</div>
+            <div>Students Enrolled</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" data-target="100">0</div>
+            <div>Dedicated Support</div>
+        </div>
+    </div>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>At Priya Career Consultancy, we understand that choosing the right medical college is one of the most important decisions in your life. With over 20 years of experience, we provide personalized offline counseling to guide NEET aspirants, droppers, graduates, and undergraduates toward their dream medical career.</p>
+                <p>We listen to your story, understand your aspirations, and suggest the best suitable degree programs according to your requirements and future scope. Our comprehensive approach includes cross-checking present college reviews to ensure you make an informed decision for a bright future.</p>
+            </div>
+            <div class="about-features">
+                <div class="feature">
+                    <strong>Personalized Counseling</strong>
+                    <p>One-on-one offline guidance tailored to your unique needs</p>
+                </div>
+                <div class="feature">
+                    <strong>Expert Guidance</strong>
+                    <p>Specialized support for NRI/Management quota admissions</p>
+                </div>
+                <div class="feature">
+                    <strong>Verified Reviews</strong>
+                    <p>Cross-checked college reviews for informed decisions</p>
+                </div>
+                <div class="feature">
+                    <strong>International Options</strong>
+                    <p>Access to quality medical colleges in India and Nepal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="courses">
+        <h2>Our Exclusive Programs</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <h3>MBBS in India</h3>
+                <p>Comprehensive guidance for admission to premier MBBS colleges across Maharashtra, Bihar, UP, MP, Rajasthan, Karnataka, and other states.</p>
+            </div>
+            <div class="course-card">
+                <h3>MD/MS Programs</h3>
+                <p>Expert counseling for postgraduate medical courses with careful consideration of specialization and future career prospects.</p>
+            </div>
+            <div class="course-card">
+                <h3>MBBS in Nepal</h3>
+                <p>Exclusive guidance for quality medical education in Nepal with affordable fees and recognized degrees.</p>
+            </div>
+            <div class="course-card">
+                <h3>NRI/Management Quota</h3>
+                <p>Specialized assistance for NRI students and management quota admissions in top medical colleges across India.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="colleges" class="colleges">
+        <h2>Our Partner Colleges</h2>
+        
+        <div class="state-colleges">
+            <h3>Maharashtra</h3>
+            <div class="college-list">
+                <div class="college-item" onclick="openCollegeDetail('Dr. D Y Patel')">Dr. D Y Patel (Mumbai, Pune, Kolhapur)</div>
+                <div class="college-item" onclick="openCollegeDetail('Bharti Vidyapeeth')">Bharti Vidyapeeth (Pune, Sangli)</div>
+                <div class="college-item" onclick="openCollegeDetail('MGM')">MGM (Navi Mumbai, Aurangabad)</div>
+                <div class="college-item" onclick="openCollegeDetail('Krishna Karad')">Krishna Karad (Karad)</div>
+            </div>
+        </div>
+
+        <div class="state-colleges">
+            <h3>Bihar</h3>
+            <div class="college-list">
+                <div class="college-item" onclick="openCollegeDetail('Narayana Medical College')">Narayana Medical College</div>
+                <div class="college-item" onclick="openCollegeDetail('Lord Buddha')">Lord Buddha</div>
+                <div class="college-item" onclick="openCollegeDetail('Katihar')">Katihar</div>
+                <div class="college-item" onclick="openCollegeDetail('Netaji Subhash')">Netaji Subhash</div>
+            </div>
+        </div>
+
+        <div class="state-colleges">
+            <h3>Rajasthan</h3>
+            <div class="college-list">
+                <div class="college-item" onclick="openCollegeDetail('JNU (Jaipur)')">JNU (Jaipur)</div>
+                <div class="college-item" onclick="openCollegeDetail('Geetanjali')">Geetanjali</div>
+                <div class="college-item" onclick="openCollegeDetail('NIMS')">NIMS</div>
+                <div class="college-item" onclick="openCollegeDetail('Pacific')">Pacific</div>
+            </div>
+        </div>
+
+        <div class="state-colleges">
+            <h3>Madhya Pradesh</h3>
+            <div class="college-list">
+                <div class="college-item" onclick="openCollegeDetail('L.N Medical College')">L.N Medical College</div>
+                <div class="college-item" onclick="openCollegeDetail('Shri Aurobindo')">Shri Aurobindo</div>
+                <div class="college-item" onclick="openCollegeDetail('Peoples Medical College')">Peoples Medical College</div>
+                <div class="college-item" onclick="openCollegeDetail('Chirayu Medical College')">Chirayu Medical College</div>
+            </div>
+        </div>
+
+        <div class="state-colleges">
+            <h3>Uttar Pradesh</h3>
+            <div class="college-list">
+                <div class="college-item" onclick="openCollegeDetail('Era Medical College')">Era Medical College</div>
+                <div class="college-item" onclick="openCollegeDetail('Shri Ram Murti Smarak')">Shri Ram Murti Smarak</div>
+                <div class="college-item" onclick="openCollegeDetail('Tirthankar Mahaveer University')">Tirthankar Mahaveer University</div>
+                <div class="college-item" onclick="openCollegeDetail('Sharda University')">Sharda University</div>
+                <div class="college-item" onclick="openCollegeDetail('Hind Medical College')">Hind Medical College</div>
+                <div class="college-item" onclick="openCollegeDetail('Muzaffarnagar Medical College')">Muzaffarnagar Medical College</div>
+                <div class="college-item" style="opacity: 0.7; cursor: default;" onclick="event.stopPropagation()">And many more...</div>
+            </div>
+        </div>
+
+        <div class="state-colleges">
+            <h3>Karnataka</h3>
+            <div class="college-list">
+                <div class="college-item" onclick="openCollegeDetail('Ramaiah')">Ramaiah (Bangalore)</div>
+                <div class="college-item" onclick="openCollegeDetail('KIMS')">KIMS</div>
+                <div class="college-item" onclick="openCollegeDetail('Vaidehi')">Vaidehi</div>
+                <div class="college-item" onclick="openCollegeDetail('Dayananda Sagar')">Dayananda Sagar</div>
+                <div class="college-item" onclick="openCollegeDetail('Sapthagiri')">Sapthagiri</div>
+                <div class="college-item" onclick="openCollegeDetail('Siddhartha')">Siddhartha (Tumkur)</div>
+                <div class="college-item" style="opacity: 0.7; cursor: default;" onclick="event.stopPropagation()">And many more...</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <p>Ready to start your medical career journey? Contact us today!</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                📞 <a href="tel:8756009786">8756009786</a>
+            </div>
+            <div class="contact-item">
+                ✉️ <a href="mailto:priyacareerorg786@gmail.com">priyacareerorg786@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="collegeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('collegeModal')">&times;</span>
+            <h3 id="modalCollegeName" style="color:#667eea; margin-bottom:1rem; font-size:1.8rem;">College Name</h3>
+            <img id="modalCollegeImg" src="" alt="College" class="college-detail-img">
+            
+            <div class="detail-grid">
+                <div class="detail-section">
+                    <h4>Key Highlights</h4>
+                    <ul id="modalHighlights" style="padding-left:1.5rem;"></ul>
+                </div>
+                <div class="detail-section">
+                    <h4>Student Reviews</h4>
+                    <div id="modalReviews"></div>
+                </div>
+                <div class="detail-section" style="grid-column: 1 / -1;">
+                    <h4>General Details</h4>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
+            <div style="margin-top:2rem; text-align:center;">
+                <button class="submit-btn" onclick="openWhatsApp()">Contact for Admission Details</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="interestModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('interestModal')">&times;</span>
+            <h3>Express Your Interest</h3>
+            <form id="interestForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Qualification *</label>
+                    <select required>
+                        <option value="">Select Qualification</option>
+                        <option>NEET Aspirant</option>
+                        <option>Dropper</option>
+                        <option>Graduate</option>
+                        <option>Undergraduate</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Address *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>NEET Marks</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Preferred State *</label>
+                    <select required>
+                        <option value="">Select State</option>
+                        <option>Maharashtra</option>
+                        <option>Bihar</option>
+                        <option>Rajasthan</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Karnataka</option>
+                        <option>Nepal</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit Interest</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </div>
+
+    <script>
+        let modalShown = false;
+        let statsAnimated = false;
+
+        // Counting animation for stats
+        function animateCount(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCount = () => {
+                current += increment;
+                if (current < target) {
+                    el.textContent = Math.floor(current) + (target === 100 ? '%' : '+');
+                    requestAnimationFrame(updateCount);
+                } else {
+                    el.textContent = target + (target === 100 ? '%' : '+');
+                }
+            };
+            
+            updateCount();
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stat-card') && !statsAnimated) {
+                        entry.target.classList.add('visible');
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        setTimeout(() => {
+                            animateCount(statNumber);
+                        }, parseInt(getComputedStyle(entry.target).animationDelay) * 1000);
+                        
+                        const allStatCards = document.querySelectorAll('.stat-card');
+                        const allVisible = Array.from(allStatCards).every(card => card.classList.contains('visible'));
+                        if (allVisible) statsAnimated = true;
+                    }
+                    
+                    if (entry.target.classList.contains('college-item')) {
+                        const items = entry.target.parentElement.querySelectorAll('.college-item');
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('visible');
+                            }, index * 100);
+                        });
+                        observer.unobserve(entry.target.parentElement);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.college-list').forEach(list => {
+            observer.observe(list.querySelector('.college-item'));
+        });
+
+        setTimeout(() => {
+            if (!modalShown) {
+                document.getElementById('interestModal').style.display = 'block';
+                modalShown = true;
+            }
+        }, 600000);
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you soon.');
+            closeModal('interestModal');
+        }
+
+        function openWhatsApp() {
+            const message = encodeURIComponent('Hello! I am interested in knowing more about medical college admissions and counseling services from Priya Career Consultancy.');
+            window.open(`https://wa.me/918756009786?text=${message}`, '_blank');
+        }
+
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // College Database with Local Images
+        const collegeData = {
+            'Dr. D Y Patel': {
+                img: 'dr-dy-patel.jpg',
+                highlights: ['Multi-specialty hospital attachment', 'Modern research facilities', 'Strong Alumni Network', 'Grade A accreditation'],
+                reviews: ['"The campus infrastructure is world-class." - Rahul S.', '"Excellent clinical exposure for MBBS students." - Priya M.'],
+                desc: 'A premier private medical university with campuses in Mumbai, Pune, and Kolhapur, known for high-quality medical education.'
+            },
+            'Bharti Vidyapeeth': {
+                img: 'bharti-vidyapeeth.jpg',
+                highlights: ['Advanced skill labs', 'Dedicated research wing', 'Centrally located in Pune', 'NAAC A+ Accredited'],
+                reviews: ['"The faculty is very supportive and knowledgeable." - Kevin G.', '"Great infrastructure and learning environment." - Sneha P.'],
+                desc: 'A deemed university with high standards in medical research and patient care across its Pune and Sangli campuses.'
+            },
+            'MGM': {
+                img: 'mgm.jpg',
+                highlights: ['Well-equipped laboratories', '1000+ bed hospital', 'Experienced faculty', 'Multi-specialty departments'],
+                reviews: ['"Excellent clinical training opportunities." - Amit K.', '"Modern facilities and good placement support." - Riya M.'],
+                desc: 'MGM Medical College offers quality medical education with campuses in Navi Mumbai and Aurangabad, providing comprehensive healthcare training.'
+            },
+            'Krishna Karad': {
+                img: 'krishna-karad.jpg',
+                highlights: ['Rural healthcare exposure', 'State-of-the-art infrastructure', 'Strong community medicine program', 'Affordable fees'],
+                reviews: ['"Great learning experience in rural settings." - Pradeep S.', '"Good balance of theory and practical." - Anjali K.'],
+                desc: 'Krishna Institute of Medical Sciences in Karad provides holistic medical education with emphasis on rural healthcare and community medicine.'
+            },
+            'Narayana Medical College': {
+                img: 'narayana-medical-college.jpg',
+                highlights: ['Modern teaching facilities', 'Well-equipped labs', 'Experienced faculty team', 'Good patient flow'],
+                reviews: ['"Supportive learning environment." - Rahul M.', '"Good clinical exposure in Bihar." - Kavita S.'],
+                desc: 'Narayana Medical College in Bihar offers quality medical education with focus on practical training and patient care.'
+            },
+            'Lord Buddha': {
+                img: 'lord-buddha.jpg',
+                highlights: ['Peaceful campus environment', 'Good infrastructure', 'Affordable fee structure', 'Quality education'],
+                reviews: ['"Nice campus and helpful teachers." - Arun K.', '"Good facilities for students." - Pooja R.'],
+                desc: 'Lord Buddha Medical College provides medical education in a serene environment with focus on student development.'
+            },
+            'Katihar': {
+                img: 'katihar.jpg',
+                highlights: ['Government recognized', 'Affordable education', 'Regional healthcare focus', 'Growing infrastructure'],
+                reviews: ['"Emerging medical college with potential." - Sanjay P.', '"Good for local students." - Meena S.'],
+                desc: 'Katihar Medical College serves the medical education needs of eastern Bihar with emphasis on regional healthcare.'
+            },
+            'Netaji Subhash': {
+                img: 'netaji-subhash.jpg',
+                highlights: ['Historical significance', 'Government support', 'Affordable fees', 'Community health focus'],
+                reviews: ['"Good government college option." - Rajesh K.', '"Decent clinical exposure." - Priya D.'],
+                desc: 'Netaji Subhash Medical College offers government-backed medical education with focus on community healthcare.'
+            },
+            'JNU (Jaipur)': {
+                img: 'jnu-jaipur.jpg',
+                highlights: ['Modern campus', 'University-backed', 'Research opportunities', 'Multi-disciplinary approach'],
+                reviews: ['"Excellent university facilities." - Vikram S.', '"Good academic environment." - Isha M.'],
+                desc: 'JNU Jaipur offers medical education as part of a comprehensive university system with emphasis on research and innovation.'
+            },
+            'Geetanjali': {
+                img: 'geetanjali.jpg',
+                highlights: ['Large hospital attachment', 'Super specialty departments', 'Advanced equipment', 'Rural health programs'],
+                reviews: ['"Great clinical exposure in Udaipur." - Manish G.', '"Well-maintained campus." - Divya R.'],
+                desc: 'Geetanjali Medical College in Udaipur provides comprehensive medical education with excellent hospital facilities.'
+            },
+            'NIMS': {
+                img: 'nims.jpg',
+                highlights: ['University status', 'Multiple specialties', 'Research focus', 'Modern infrastructure'],
+                reviews: ['"One of the best in Jaipur." - Rohit M.', '"Great faculty and facilities." - Anita S.'],
+                desc: 'NIMS University in Jaipur offers quality medical education with university-level facilities and research opportunities.'
+            },
+            'Pacific': {
+                img: 'pacific.jpg',
+                highlights: ['Modern campus', 'Good infrastructure', 'University environment', 'Growing reputation'],
+                reviews: ['"Developing college with good facilities." - Aditya K.', '"Supportive management." - Neha P.'],
+                desc: 'Pacific Medical College & Hospital in Udaipur offers medical education with focus on holistic development.'
+            },
+            'L.N Medical College': {
+                img: 'ln-medical-college.jpg',
+                highlights: ['Established institution', 'Good clinical facilities', 'Experienced faculty', 'Central location in Bhopal'],
+                reviews: ['"Old and reputed college in MP." - Vishal T.', '"Good patient diversity." - Rani M.'],
+                desc: 'L.N. Medical College in Bhopal is an established institution offering quality medical education in central India.'
+            },
+            'Shri Aurobindo': {
+                img: 'shri-aurobindo.jpg',
+                highlights: ['Well-equipped labs', 'Modern teaching methods', 'Good hospital facilities', 'Affordable fees'],
+                reviews: ['"Good learning environment." - Karan S.', '"Decent clinical exposure in Indore." - Pallavi K.'],
+                desc: 'Shri Aurobindo Medical College in Indore provides medical education with modern facilities and practical training.'
+            },
+            'Peoples Medical College': {
+                img: 'peoples-medical-college.jpg',
+                highlights: ['Community focus', 'Affordable education', 'Good infrastructure', 'Patient-centric training'],
+                reviews: ['"Good for students from middle class." - Deepak M.', '"Value for money." - Sunita R.'],
+                desc: 'Peoples Medical College offers accessible medical education with focus on community healthcare and patient care.'
+            },
+            'Chirayu Medical College': {
+                img: 'chirayu-medical-college.jpg',
+                highlights: ['Modern campus', 'Good facilities', 'Research opportunities', 'Growing reputation'],
+                reviews: ['"Nice infrastructure." - Abhishek P.', '"Supportive environment for learning." - Aarti S.'],
+                desc: 'Chirayu Medical College provides medical education with modern facilities and emphasis on research.'
+            },
+            'Era Medical College': {
+                img: 'era-medical-college.jpg',
+                highlights: ['Modern infrastructure', 'Good faculty', 'Research facilities', 'Central location in Lucknow'],
+                reviews: ['"Well-managed institution." - Nikhil K.', '"Good academic environment." - Swati P.'],
+                desc: 'Era Medical College in Lucknow offers quality medical education with modern facilities and research opportunities.'
+            },
+            'Shri Ram Murti Smarak': {
+                img: 'shri-ram-murti-smarak.jpg',
+                highlights: ['Large hospital complex', 'Multi-specialty departments', 'Modern teaching facilities', 'Strong clinical exposure'],
+                reviews: ['"Excellent infrastructure in Bareilly." - Rajat S.', '"Good patient flow and learning." - Priyanka M.'],
+                desc: 'SRMS Medical College in Bareilly is known for its comprehensive medical education and extensive hospital facilities.'
+            },
+            'Tirthankar Mahaveer University': {
+                img: 'tirthankar-mahaveer-university.jpg',
+                highlights: ['University status', 'Modern campus', 'Research opportunities', 'Affordable fees'],
+                reviews: ['"Good university environment." - Vikash K.', '"Decent facilities in Moradabad." - Nisha R.'],
+                desc: 'TMU Medical College offers medical education with university-level facilities and focus on holistic development.'
+            },
+            'Sharda University': {
+                img: 'sharda-university.jpg',
+                highlights: ['Global recognition', '900+ bed hospital', 'Multi-cultural environment', 'Excellent placement cell'],
+                reviews: ['"Best infrastructure in Greater Noida." - Amit K.', '"Great faculty and teaching methods." - Sneha R.'],
+                desc: 'Located in Greater Noida, Sharda is a highly reputed institution offering comprehensive medical programs with global standards.'
+            },
+            'Hind Medical College': {
+                img: 'hind-medical-college.jpg',
+                highlights: ['Affordable fees', 'Good infrastructure', 'Patient diversity', 'Growing reputation'],
+                reviews: ['"Value for money in UP." - Pankaj M.', '"Decent facilities." - Anjali S.'],
+                desc: 'Hind Medical College provides accessible medical education with focus on practical training and patient care.'
+            },
+            'Muzaffarnagar Medical College': {
+                img: 'muzaffarnagar-medical-college.jpg',
+                highlights: ['Regional importance', 'Good patient diversity', 'Affordable education', 'Growing infrastructure'],
+                reviews: ['"Good option in western UP." - Rohit P.', '"Emerging college with potential." - Kavita S.'],
+                desc: 'Muzaffarnagar Medical College serves the medical education needs of western Uttar Pradesh with focus on community healthcare.'
+            },
+            'Ramaiah': {
+                img: 'ramaiah.jpg',
+                highlights: ['Premier institution', 'Excellent infrastructure', 'Strong research focus', 'Top placement record'],
+                reviews: ['"One of the best in Bangalore." - Arjun K.', '"World-class facilities and faculty." - Divya R.'],
+                desc: 'M.S. Ramaiah Medical College in Bangalore is one of the most prestigious private medical colleges in Karnataka with excellent academic standards.'
+            },
+            'KIMS': {
+                img: 'kims.jpg',
+                highlights: ['Large hospital attachment', 'Multi-specialty exposure', 'Modern equipment', 'Good clinical training'],
+                reviews: ['"Excellent clinical exposure." - Suresh M.', '"Great learning environment." - Ananya P.'],
+                desc: 'KIMS (Kempegowda Institute of Medical Sciences) in Bangalore offers comprehensive medical education with strong clinical exposure.'
+            },
+            'Vaidehi': {
+                img: 'vaidehi.jpg',
+                highlights: ['Modern campus', 'Good infrastructure', 'Experienced faculty', 'Patient-centric approach'],
+                reviews: ['"Nice facilities in Bangalore." - Kiran S.', '"Supportive environment." - Meera K.'],
+                desc: 'Vydehi Institute of Medical Sciences provides quality medical education with emphasis on practical skills and patient care.'
+            },
+            'Dayananda Sagar': {
+                img: 'dayananda-sagar.jpg',
+                highlights: ['University environment', 'Modern facilities', 'Research opportunities', 'Good infrastructure'],
+                reviews: ['"Good college in Bangalore." - Praveen R.', '"Decent clinical exposure." - Lakshmi M.'],
+                desc: 'Dayananda Sagar Medical College offers medical education within a comprehensive university setting with modern facilities.'
+            },
+            'Sapthagiri': {
+                img: 'sapthagiri.jpg',
+                highlights: ['Affordable fees', 'Good patient flow', 'Experienced faculty', 'Growing reputation'],
+                reviews: ['"Value for money in Bangalore." - Harish K.', '"Good learning opportunities." - Sowmya R.'],
+                desc: 'Sapthagiri Institute of Medical Sciences provides accessible medical education with focus on clinical skills development.'
+            },
+            'Siddhartha': {
+                img: 'siddhartha.jpg',
+                highlights: ['Established college', 'Good infrastructure', 'Affordable fees', 'Rural exposure'],
+                reviews: ['"Good option in Tumkur." - Naveen S.', '"Peaceful campus environment." - Rekha M.'],
+                desc: 'Siddhartha Medical College in Tumkur offers quality medical education with emphasis on community health and rural medicine.'
+            }
+        };
+
+        function openCollegeDetail(name) {
+            const data = collegeData[name] || {
+                img: 'default-college.jpg',
+                highlights: ['Quality Medical Education', 'Clinical Exposure', 'Modern Facilities'],
+                reviews: ['"Good experience and learning environment." - Student'],
+                desc: 'A leading medical college offering specialized medical training and research opportunities in its region.'
+            };
+
+            document.getElementById('modalCollegeName').innerText = name;
+            document.getElementById('modalCollegeImg').src = data.img;
+            document.getElementById('modalDescription').innerText = data.desc;
+
+            const highlightsList = document.getElementById('modalHighlights');
+            highlightsList.innerHTML = '';
+            data.highlights.forEach(h => {
+                const li = document.createElement('li');
+                li.innerText = h;
+                highlightsList.appendChild(li);
+            });
+
+            const reviewsDiv = document.getElementById('modalReviews');
+            reviewsDiv.innerHTML = '';
+            data.reviews.forEach(r => {
+                const p = document.createElement('p');
+                p.className = 'review-item';
+                p.innerText = r;
+                reviewsDiv.appendChild(p);
+            });
+
+            document.getElementById('collegeModal').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
