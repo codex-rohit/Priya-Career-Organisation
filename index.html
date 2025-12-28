@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priya Career Consultancy - Imagine Yourself</title>
+    <title>Priya Career Organisation - Imagine Yourself</title>
     <style>
         * {
             margin: 0;
@@ -194,11 +194,31 @@
             padding: 1.5rem;
             border-radius: 10px;
             border-left: 4px solid #667eea;
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
+            animation: slideInRight 0.6s forwards;
+        }
+
+        .feature:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .feature:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .feature:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .feature:nth-child(4) {
+            animation-delay: 0.4s;
         }
 
         .feature:hover {
-            transform: translateX(10px);
+            transform: translateX(10px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaf6 100%);
+            border-left-width: 6px;
         }
 
         /* Courses Section */
@@ -489,6 +509,11 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @keyframes slideIn {
@@ -527,7 +552,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Priya Career Consultancy</div>
+            <div class="logo">Priya Career Organisation</div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
@@ -540,7 +565,7 @@
     </header>
 
     <section id="home" class="hero">
-        <h1>Priya Career Consultancy</h1>
+        <h1>Priya Career Organisation</h1>
         <p class="tagline">Your Dream. Our Guidance. Your Success.</p>
         <a href="#contact" class="cta-button">Start Your Journey</a>
     </section>
@@ -564,7 +589,7 @@
         <h2>About Us</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>At Priya Career Consultancy, we understand that choosing the right medical college is one of the most important decisions in your life. With over 20 years of experience, we provide personalized offline counseling to guide NEET aspirants, droppers, graduates, and undergraduates toward their dream medical career.</p>
+                <p>At Priya Career Organisation, we understand that choosing the right medical college is one of the most important decisions in your life. With over 20 years of experience, we provide personalized offline counseling to guide NEET aspirants, droppers, graduates, and undergraduates toward their dream medical career.</p>
                 <p>We listen to your story, understand your aspirations, and suggest the best suitable degree programs according to your requirements and future scope. Our comprehensive approach includes cross-checking present college reviews to ensure you make an informed decision for a bright future.</p>
             </div>
             <div class="about-features">
@@ -817,6 +842,10 @@
                         if (allVisible) statsAnimated = true;
                     }
                     
+                    if (entry.target.classList.contains('feature')) {
+                        entry.target.classList.add('visible');
+                    }
+                    
                     if (entry.target.classList.contains('college-item')) {
                         const items = entry.target.parentElement.querySelectorAll('.college-item');
                         items.forEach((item, index) => {
@@ -838,12 +867,13 @@
             observer.observe(list.querySelector('.college-item'));
         });
 
+        // Show modal after 2 minutes (120000 milliseconds)
         setTimeout(() => {
             if (!modalShown) {
                 document.getElementById('interestModal').style.display = 'block';
                 modalShown = true;
             }
-        }, 600000);
+        }, 120000);
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
@@ -856,7 +886,7 @@
         }
 
         function openWhatsApp() {
-            const message = encodeURIComponent('Hello! I am interested in knowing more about medical college admissions and counseling services from Priya Career Consultancy.');
+            const message = encodeURIComponent('Hello! I am interested in knowing more about medical college admissions and counseling services from Priya Career Organisation.');
             window.open(`https://wa.me/918756009786?text=${message}`, '_blank');
         }
 
